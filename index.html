@@ -1,10 +1,23 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>My Imageboard</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+    <h1 id="title">I ❤️ Pixels.</h1>
+    <h3 id="subtitle"> 📸 Images Uploaded 📸 </h3>
+
+    <div id="main">
+        <div v-for="i in images" v-bind:key="i.id" class="images">
+            <img id="pics" v-bind:src="i.url" v-bind:alt="i.description">
+            <p id="description">{{i.title}} </p>
+        </div>
+    </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
+
 </html>

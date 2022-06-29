@@ -1,0 +1,29 @@
+* {
+    background-color: orange;
+}
+body {
+    /* border: 3px solid brown; */
+}
+#title,
+#subtitle {
+    text-align: center;
+    font-style: oblique;
+    font-weight: bold;
+}
+#main {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto;
+}
+#pics {
+    height: 400px;
+    width: 400px;
+    border: 3px solid brown;
+}
+#description {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-style: bold;
+    border: 3px solid brown;
+    background: white;
+    text-align: center;
+}
