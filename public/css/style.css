@@ -4,7 +4,13 @@
 body {
     /* border: 3px solid brown; */
 }
-#title,
+#name {
+    border: 3px solid brown;
+    background: white;
+    text-align: center;
+    font-style: oblique;
+    font-weight: bold;
+}
 #subtitle {
     text-align: center;
     font-style: oblique;
@@ -20,11 +26,18 @@ body {
     width: 400px;
     border: 3px solid brown;
 }
-#description {
+#description,
+#title {
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     font-style: bold;
     border: 3px solid brown;
     background: white;
     text-align: center;
+    width: 400px;
 }
-Footer
+
+#form {
+    /* justify-content: space-evenly; */
+    grid-column: 1 /span 2;
+    padding: 10px;
+}

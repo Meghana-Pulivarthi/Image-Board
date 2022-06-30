@@ -7,6 +7,7 @@ Vue.createApp({
             images: [],
             title: "",
             user: "",
+            description: "",
             url: "",
         };
     },

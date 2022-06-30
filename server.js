@@ -80,8 +80,6 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
             console.log("Error in add Images", err);
         });
 
-    // res.json({ success: true });
-    // res.json({ tempAnswer: true });
 });
 
 app.get("*", (req, res) => {
