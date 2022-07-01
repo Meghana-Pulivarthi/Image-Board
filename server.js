@@ -41,6 +41,18 @@ app.get("/images", (req, res) => {
             console.log("err in get images", err);
         });
 });
+app.get("/images/:imageid", (req, res) => {
+    console.log("req.params.imageid", req.params.imageid);
+    const imageid = req.params.imageid;
+    db.highlightedImage(imageid)
+        .then((result) => {
+            console.log("In highligted", result.rows);
+            res.json(result.rows[0]);
+        })
+        .catch((err) => {
+            console.log("error in highlighted image", err);
+        });
+});
 // image in single must match with name=img in input field
 app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
     console.log("In upload");
@@ -79,7 +91,6 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
         .catch((err) => {
             console.log("Error in add Images", err);
         });
-
 });
 
 app.get("*", (req, res) => {

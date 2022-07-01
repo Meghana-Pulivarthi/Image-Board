@@ -17,3 +17,8 @@ module.exports.addImages = (url, username, title, description) => {
     const param = [url, username, title, description];
     return db.query(q, param);
 };
+
+
+module.exports.highlightedImage = (imageid)=>{
+    return db.query(`SELECT * FROM images WHERE id=$1`,[imageid])
+}

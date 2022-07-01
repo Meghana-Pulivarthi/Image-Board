@@ -12,6 +12,12 @@
     <h3 id="subtitle"> 📸 Images Uploaded 📸 </h3>
 
     <div id="main">
+
+
+
+        <modal v-if="imageSelected" v-bind:image-selected="imageSelected" @close="closemodal">
+        </modal>
+
         <form id="form" method="post" action="/upload" enctype="multipart/form-data" @submit.prevent="handleSubmit">
             <input required name='title' placeholder="title" type="text">
             <input required name='user' placeholder="user" type="text">
@@ -20,7 +26,7 @@
             <button>Submit</button>
         </form>
         <br />
-        <div v-for="i in images" v-bind:key="i.id" class="images">
+        <div v-for="i in images" v-bind:key="i.id" class="images" @click="imageClicked(i.id)">
             <img id="pics" v-bind:src="i.url" v-bind:alt="i.description">
             <p id="title">{{i.title}} </p>
             <p id="description">{{i.description}}</p>
