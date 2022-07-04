@@ -2,21 +2,31 @@ const modal = {
     data() {
         return {
             image: {},
+            comments: {},
+            user: "",
+            comment: "",
         };
     },
-    props: ["image-selected"],
+    props: ["image-selected", "more-selected"],
     mounted() {
         console.log("Modal mounted");
-        console.log("accessing prop value", this.imageSelected);
+        console.log("accessing prop value image", this.imageSelected);
+        console.log("accessing prop value more", this.moreelected);
 
         //fetch
-        fetch(`/images/${this.imageSelected}`)
+        fetch(`/imagespopup/${this.imageSelected}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("response from /images:", data);
                 this.image = data;
 
                 console.log(this.image);
+            });
+
+        fetch("/comments")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("response from /comments", data);
             });
     },
     methods: {

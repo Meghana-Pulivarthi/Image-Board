@@ -41,7 +41,10 @@ app.get("/images", (req, res) => {
             console.log("err in get images", err);
         });
 });
-app.get("/images/:imageid", (req, res) => {
+//modal
+// pop up/ enlarge image
+app.get("/imagespopup/:imageid", (req, res) => {
+    console.log("req.params", req.params);
     console.log("req.params.imageid", req.params.imageid);
     const imageid = req.params.imageid;
     db.highlightedImage(imageid)
@@ -51,6 +54,22 @@ app.get("/images/:imageid", (req, res) => {
         })
         .catch((err) => {
             console.log("error in highlighted image", err);
+        });
+});
+
+//Pagination
+// get more imge/ ,more Image /fetching more
+app.get("/moreimages/:lowestid", (req, res) => {
+    console.log("req.params", req.params);
+    const lowestid = req.params.lowestid;
+    // console.log("req.params.lowestid", req.params.lowestid);
+    db.getMoreImages(lowestid)
+        .then((result) => {
+            console.log("result.rows", result.rows);
+            res.json(result.rows);
+        })
+        .catch((err) => {
+            console.log("Error in moreImages", err);
         });
 });
 // image in single must match with name=img in input field

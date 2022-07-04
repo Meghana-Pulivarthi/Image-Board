@@ -12,6 +12,7 @@ Vue.createApp({
             description: "",
             url: "",
             imageSelected: "",
+            visible: true,
         };
     },
     components: {
@@ -34,11 +35,55 @@ Vue.createApp({
         },
         closemodal() {
             this.imageSelected = null;
-            console.log("first component emitted close!!!");
+            //     console.log("first component emitted close!!!");
+            //     console.log(
+            //         "the component would like have you make it disappear :D"
+            //     );
+            //     console.log("set this.moodSelected to sth falsy");
+        },
+        moreClicked() {
+            /* 
+
+array = [1,2,3,4,5,6]
+
+array[array.length - 1]
+
+arrayObj = [{},{},{},{}]
+
+obj={
+    id,
+    count,
+    name,
+}
+
+obj.count
+obj[count]
+
+
+array[array.length-1].count
+
+*/
+
+            console.log("More clicked");
             console.log(
-                "the component would like have you make it disappear :D"
+                "images[] smallest id is: ",
+                this.images[this.images.length - 1].id
             );
-            console.log("set this.moodSelected to sth falsy");
+            // console.log("this.moreSelected", moreSelected);
+            fetch(`/moreimages/${this.images[this.images.length - 1].id}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log("response from /images:", data);
+                    this.images = [...this.images, ...data];
+
+                    for (var i = 0; i <= data.length; i++) {
+                        // console.log("data[i].id", data[i].id);
+                        // console.log("data[i].lowestid", data[i].lowestId);
+                        if (data[i].lowestId == data[i].id) {
+                            this.visible = null;
+                        }
+                    }
+                });
         },
         handleSubmit(e) {
             //to prevent default refresh of page on submit we can use
