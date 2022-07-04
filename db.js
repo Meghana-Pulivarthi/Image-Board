@@ -13,12 +13,12 @@ module.exports.getImages = () => {
 };
 
 module.exports.addImages = (url, username, title, description) => {
+    console.log("inside addImages", url, username, title, description);
     const q = `INSERT INTO images (url,username,title,description) VALUES ($1,$2,$3,$4) RETURNING *`;
     const param = [url, username, title, description];
     return db.query(q, param);
 };
 
-
-module.exports.highlightedImage = (imageid)=>{
-    return db.query(`SELECT * FROM images WHERE id=$1`,[imageid])
-}
+module.exports.highlightedImage = (imageid) => {
+    return db.query(`SELECT * FROM images WHERE id=$1`, [imageid]);
+};

@@ -1,9 +1,7 @@
 * {
     background-color: orange;
 }
-body {
-    /* border: 3px solid brown; */
-}
+
 #name {
     border: 3px solid brown;
     background: white;
@@ -38,6 +36,33 @@ body {
 
 #form {
     /* justify-content: space-evenly; */
-    grid-column: 1 /span 2;
+    grid-column: 1 / span 2;
     padding: 10px;
+}
+
+#slectedImg {
+    border: 3px solid brown;
+    justify-content: center;
+    border: 3px solid brown;
+}
+#selectedTitle,
+#selectedDesc {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-style: bold;
+    background: white;
+    text-align: center;
+    width: 400px;
+    float: right;
+    border: 3px solid brown;
+}
+#X {
+    text-decoration: underline;
+    background-color: #fff;
+    size: 50px;
+    float: right;
+}
+
+#selected {
+    border: 3px solid brown;
+    background-color: #fff;
 }

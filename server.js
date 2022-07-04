@@ -76,14 +76,14 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
         });
         return;
     }
-    if (!req.body.image) {
-        res.json({
-            error: "Missing body field",
-        });
-        return;
-    }
+    // if (!req.body.image) {
+    //     res.json({
+    //         error: "Missing body field",
+    //     });
+    //     return;
+    // }
 
-    db.addImages(url, req.body.title, req.body.user)
+    db.addImages(url, req.body.title, req.body.user, req.body.description)
         .then((result) => {
             console.log("result.rows", result.rows);
             res.json({ data: result.rows[0] });

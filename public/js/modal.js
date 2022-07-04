@@ -25,12 +25,11 @@ const modal = {
             this.$emit("close");
         },
     },
-    template: `<div>
-                     <h1 @click="notifyParent"> X</h1>
-                     <h1>I am your modal template</h1>
-                     <img v-bind:src="image.url" v-bind:alt="image.description">
-                     <p>{{image.title}}</p>
-                     <p>{{image.description}}</p>
+    template: `<div id="selected">
+                     <h1 id="X" @click="notifyParent">x</h1>
+                     <img id="selectedImg" v-bind:src="image.url" v-bind:alt="image.description">
+                     <p id="selectedTitle">{{image.title}}</p>
+                     <p id="selectedDesc">{{image.description}}</p>
 </div>
     `,
 };
