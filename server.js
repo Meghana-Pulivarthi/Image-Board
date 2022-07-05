@@ -56,6 +56,18 @@ app.get("/imagespopup/:imageid", (req, res) => {
             console.log("error in highlighted image", err);
         });
 });
+app.get("/comments/:imageid", (req, res) => {
+    console.log("Inside comments get");
+    console.log("req.params.imageid", req.params.imageid);
+    db.getComment(req.params.imageid)
+        .then((result) => {
+            console.log("result.rows", result.rows);
+            res.json(result.rows);
+        })
+        .catch((err) => {
+            console.log("Error in get comments", err);
+        });
+});
 
 //Pagination
 // get more imge/ ,more Image /fetching more
@@ -109,6 +121,22 @@ app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
         })
         .catch((err) => {
             console.log("Error in add Images", err);
+        });
+});
+
+app.post("/comments", (req, res) => {
+    console.log("In comments post");
+    console.log("req.body.comment", req.body.comment);
+    console.log("req.body.user", req.body.user);
+    console.log("req.body.images_id", req.body.images_id);
+
+    db.addComment(req.body.comment, req.body.user, req.body.images_id)
+        .then((result) => {
+            console.log("result.rows", result.rows[0]);
+            res.json({ payload: result.rows[0] });
+        })
+        .catch((err) => {
+            console.log("Error in addcomments", err);
         });
 });
 

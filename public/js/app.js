@@ -20,6 +20,16 @@ Vue.createApp({
     },
     mounted() {
         console.log("It is mounted");
+        console.log(
+            "users wants to see particular img",
+            location.pathname.slice(1)
+        );
+        this.imageSelected = location.pathname.slice(1);
+        //when the user interacts with back and forth button
+        window.addEventListener("popstate", () => {
+            console.log("users clicked back and forth");
+            this.imageSelected = location.pathname.slice(1);
+        });
         fetch("/images")
             .then((res) => res.json())
             .then((data) => {
@@ -36,54 +46,31 @@ Vue.createApp({
         closemodal() {
             this.imageSelected = null;
             //     console.log("first component emitted close!!!");
-            //     console.log(
-            //         "the component would like have you make it disappear :D"
-            //     );
-            //     console.log("set this.moodSelected to sth falsy");
         },
         moreClicked() {
-            /* 
-
-array = [1,2,3,4,5,6]
-
-array[array.length - 1]
-
-arrayObj = [{},{},{},{}]
-
-obj={
-    id,
-    count,
-    name,
-}
-
-obj.count
-obj[count]
-
-
-array[array.length-1].count
-
-*/
-
             console.log("More clicked");
             console.log(
                 "images[] smallest id is: ",
                 this.images[this.images.length - 1].id
-            );
-            // console.log("this.moreSelected", moreSelected);
-            fetch(`/moreimages/${this.images[this.images.length - 1].id}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log("response from /images:", data);
-                    this.images = [...this.images, ...data];
+            ),
+                // console.log("this.moreSelected", moreSelected);
+                fetch(`/moreimages/${this.images[this.images.length - 1].id}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log("response from /images:", data);
+                        this.images = [...this.images, ...data];
 
-                    for (var i = 0; i <= data.length; i++) {
-                        // console.log("data[i].id", data[i].id);
-                        // console.log("data[i].lowestid", data[i].lowestId);
-                        if (data[i].lowestId == data[i].id) {
+                        if (this.images[this.images.length - 1].id == 1) {
                             this.visible = null;
                         }
-                    }
-                });
+                        // for (var i = 0; i <= data.length; i++) {
+                        //     // console.log("data[i].id", data[i].id);
+                        //     // console.log("data[i].lowestid", data[i].lowestId);
+                        //     if (data[i].lowestid == data[i].id) {
+                        //         this.visible = null;
+                        //     }
+                        // }
+                    });
         },
         handleSubmit(e) {
             //to prevent default refresh of page on submit we can use

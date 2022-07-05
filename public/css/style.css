@@ -42,8 +42,9 @@
 
 #slectedImg {
     border: 3px solid brown;
-    justify-content: center;
     border: 3px solid brown;
+    size: 25px;
+
 }
 #selectedTitle,
 #selectedDesc {
@@ -59,12 +60,15 @@
     text-decoration: underline;
     background-color: #fff;
     size: 50px;
-    float: right;
+    float: center;
 }
 
 #selected {
     border: 3px solid brown;
-    background-color: #fff;
+    position:fixed;
+    left: 100px;
+    top: 100px;
+    /* background-color: #fff; */
 }
 #more{
     justify-self: center;
