@@ -42,9 +42,12 @@ Vue.createApp({
         imageClicked(id) {
             console.log("Image clicked", id);
             this.imageSelected = id;
+            history.pushState({}, "", "/" + id);
+            
         },
         closemodal() {
             this.imageSelected = null;
+            history.pushState({}, "", "/");
             //     console.log("first component emitted close!!!");
         },
         moreClicked() {
@@ -60,16 +63,16 @@ Vue.createApp({
                         console.log("response from /images:", data);
                         this.images = [...this.images, ...data];
 
-                        if (this.images[this.images.length - 1].id == 1) {
-                            this.visible = null;
-                        }
-                        // for (var i = 0; i <= data.length; i++) {
-                        //     // console.log("data[i].id", data[i].id);
-                        //     // console.log("data[i].lowestid", data[i].lowestId);
-                        //     if (data[i].lowestid == data[i].id) {
-                        //         this.visible = null;
-                        //     }
+                        // if (this.images[this.images.length - 1].id == 1) {
+                        //     this.visible = null;
                         // }
+                        for (var i = 0; i < data.length; i++) {
+                            console.log("data[i]", data[i]);
+                            console.log("data[i].lowestid", data[i].lowestId);
+                            if (data[i].lowestId == data[i].id) {
+                                this.visible = null;
+                            }
+                        }
                     });
         },
         handleSubmit(e) {

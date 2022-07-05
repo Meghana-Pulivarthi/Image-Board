@@ -13,13 +13,18 @@ const modal = {
     mounted() {
         console.log("Modal mounted");
         console.log("accessing prop value image", this.imageSelected);
-
+        // if (!Number.parseInt(`${this.imageSelected}`)) {
+        // }
         //fetch highlighted image
         fetch(`/imagespopup/${this.imageSelected}`)
             .then((res) => res.json())
-            .then((data) => {
-                console.log("response from /images:", data);
-                this.image = data;
+            .then((res) => {
+                console.log("response from /imagespopup:", res);
+                if (res.data) {
+                    this.image = res.data;
+                } else {
+                    this.$emit("close");
+                }
             });
 
         //fetch comments
@@ -60,8 +65,8 @@ const modal = {
     },
 
     template: `<div id="selected">
-                     <h1 id="X" @click="notifyParent">x</h1>
-                     <img id="selectedImg" v-bind:src="image.url" v-bind:alt="image.description">
+                     <h1 id="X" @click="notifyParent">❌</h1>
+                     <img id="selectedImg"  v-bind:src="image.url" v-bind:alt="image.description">
                      <p id="selectedTitle">{{image.title}}</p>
                      <p id="selectedDesc">{{image.description}}</p>
 

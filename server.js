@@ -50,7 +50,7 @@ app.get("/imagespopup/:imageid", (req, res) => {
     db.highlightedImage(imageid)
         .then((result) => {
             console.log("In highligted", result.rows);
-            res.json(result.rows[0]);
+            res.json({ data: result.rows[0] });
         })
         .catch((err) => {
             console.log("error in highlighted image", err);

@@ -44,7 +44,6 @@
     border: 3px solid brown;
     border: 3px solid brown;
     size: 25px;
-
 }
 #selectedTitle,
 #selectedDesc {
@@ -57,19 +56,17 @@
     border: 3px solid brown;
 }
 #X {
-    text-decoration: underline;
-    background-color: #fff;
     size: 50px;
     float: center;
 }
 
 #selected {
     border: 3px solid brown;
-    position:fixed;
+    position: fixed;
     left: 100px;
     top: 100px;
     /* background-color: #fff; */
 }
-#more{
+#more {
     justify-self: center;
 }
