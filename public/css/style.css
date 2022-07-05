@@ -62,7 +62,7 @@
 
 #selected {
     border: 3px solid brown;
-    position: fixed;
+    position: absolute;
     left: 100px;
     top: 100px;
     /* background-color: #fff; */

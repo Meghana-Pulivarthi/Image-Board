@@ -36,7 +36,7 @@ module.exports.highlightedImage = (imageid) => {
 
 module.exports.getMoreImages = (id) => {
     return db.query(
-        `SELECT url, title, id, (
+        `SELECT url, title, description, id, (
         SELECT id FROM images
         ORDER BY id ASC
         LIMIT 1

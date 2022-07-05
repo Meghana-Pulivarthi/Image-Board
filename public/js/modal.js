@@ -71,8 +71,8 @@ const modal = {
                      <p id="selectedDesc">{{image.description}}</p>
 
             <form  method="post" @submit.prevent="handleSubmitComment">
-            <input required name='username' placeholder="enter your name" type="text" v-model="user">
-            <input required name='comment' placeholder="comment" type="text" v-model="comment">
+            <input required name='username' placeholder="Enter your name" type="text" v-model="user">
+            <input required name='comment' placeholder="Add Comment" type="text" v-model="comment">
             <button>Submit</button>
         </form>
 <div v-if="comments.length" v-for="comment in comments" :key="comment.id" id="comment">                             
